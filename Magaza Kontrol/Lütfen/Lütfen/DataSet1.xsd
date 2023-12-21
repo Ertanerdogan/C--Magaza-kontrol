@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DbYeniConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DbYeniConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Lütfen.Properties.Settings.GlobalReference.Default.DbYeniConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="UrunListele" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="UrunListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="UrunListele" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UrunID,UrunAd,UrunAlis,UrunSatis,UrunStok,KategoriAd FROM TblUrun
+INNER join TblKategori
+on TblUrun.UrunKategori = TblKategori.KategoriID </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UrunID" DataSetColumn="UrunID" />
+              <Mapping SourceColumn="UrunAd" DataSetColumn="UrunAd" />
+              <Mapping SourceColumn="UrunAlis" DataSetColumn="UrunAlis" />
+              <Mapping SourceColumn="UrunSatis" DataSetColumn="UrunSatis" />
+              <Mapping SourceColumn="UrunStok" DataSetColumn="UrunStok" />
+              <Mapping SourceColumn="KategoriAd" DataSetColumn="KategoriAd" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblUrun" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="EnAzKarYapanUrun" Modifier="Public" Name="EnAzKarYapanUrun" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="EnAzKarYapanUrun">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UrunAd from TblUrun where UrunSatis-UrunAlis = (SELECT Min(UrunSatis-UrunAlis) from TblUrun)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblUrun" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="EnAzStok" Modifier="Public" Name="EnAzStok" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="EnAzStok">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UrunAd From TblUrun where UrunStok = (SELECT Min(UrunStok) From TblUrun)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblUrun" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="EnCokKarYapanUrun" Modifier="Public" Name="EnCokKarYapanUrun" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="EnCokKarYapanUrun">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UrunAd from TblUrun where UrunSatis-UrunAlis = (SELECT MAX(UrunSatis-UrunAlis) from TblUrun)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblUrun" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="EnCokStok" Modifier="Public" Name="EnCokStok" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="EnCokStok">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UrunAd From TblUrun where UrunStok = (SELECT Max(UrunStok) From TblUrun)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="IDListele" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="IDListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="IDListele" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UrunID,UrunAd,UrunAlis,UrunSatis,UrunStok,KategoriAd FROM TblUrun
+INNER join TblKategori
+on TblUrun.UrunKategori = TblKategori.KategoriID WHERE UrunID = @id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="UrunID" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="KategoriListele" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="KategoriListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="KategoriListele" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UrunID,UrunAd,UrunAlis,UrunSatis,UrunStok,KategoriAd FROM TblUrun
+INNER join TblKategori
+on TblUrun.UrunKategori = TblKategori.KategoriID WHERE KategoriAd = @Kategori</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Kategori" ColumnName="KategoriAd" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Kategori" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ToplamKar" Modifier="Public" Name="ToplamKar" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="ToplamKar">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SUM(UrunStok*(UrunSatis-UrunAlis)) from TblUrun</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ToplamStokSayisi" Modifier="Public" Name="ToplamStokSayisi" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="ToplamStokSayisi">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SUM(UrunStok) from TblUrun </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ToplamUrunSayisi" Modifier="Public" Name="ToplamUrunSayisi" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ToplamUrunSayisi">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT (*) FROM TblUrun</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UrunEkle" Modifier="Public" Name="UrunEkle" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UrunEkle">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT  INTO TBLUrun (UrunAd,UrunAlis,UrunSatis,UrunStok,UrunKategori) VALUES(@ad,@alis,@satis,@stok,@kategori)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ad" ColumnName="UrunAd" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ad" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="UrunAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="alis" ColumnName="UrunAlis" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@alis" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="UrunAlis" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="satis" ColumnName="UrunSatis" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@satis" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="UrunSatis" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="stok" ColumnName="UrunStok" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@stok" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunStok" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="kategori" ColumnName="UrunKategori" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@kategori" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunKategori" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UrunGuncelle" Modifier="Public" Name="UrunGuncelle" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UrunGuncelle">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE TblUrun
+SET UrunAd = @ad, UrunAlis = @alis, UrunSatis = @satis, UrunStok = @stok, UrunKategori = @kategori
+where UrunID = @id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ad" ColumnName="UrunAd" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ad" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="UrunAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="alis" ColumnName="UrunAlis" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@alis" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="UrunAlis" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="satis" ColumnName="UrunSatis" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@satis" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="UrunSatis" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="stok" ColumnName="UrunStok" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@stok" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunStok" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="kategori" ColumnName="UrunKategori" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@kategori" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunKategori" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="UrunID" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UrunSil" Modifier="Public" Name="UrunSil" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UrunSil">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM TblUrun where UrunID = @id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="UrunID" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TblKategoriTableAdapter" GeneratorDataComponentClassName="TblKategoriTableAdapter" Name="TblKategori" UserDataComponentName="TblKategoriTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblKategori" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="KategoriListele" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="KategoriListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="KategoriListele" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [TblKategori] WHERE (([KategoriID] = @Original_KategoriID) AND ([KategoriAd] = @Original_KategoriAd))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KategoriID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KategoriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_KategoriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [TblKategori] ([KategoriAd]) VALUES (@KategoriAd);
+SELECT KategoriID, KategoriAd FROM TblKategori WHERE (KategoriID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@KategoriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM TblKategori</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [TblKategori] SET [KategoriAd] = @KategoriAd WHERE (([KategoriID] = @Original_KategoriID) AND ([KategoriAd] = @Original_KategoriAd));
+SELECT KategoriID, KategoriAd FROM TblKategori WHERE (KategoriID = @KategoriID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@KategoriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_KategoriID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="KategoriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_KategoriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="KategoriID" ColumnName="KategoriID" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@KategoriID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KategoriID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="KategoriID" DataSetColumn="KategoriID" />
+              <Mapping SourceColumn="KategoriAd" DataSetColumn="KategoriAd" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblKategori" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="IDKategoriListele" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="IDKategoriListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="IDKategoriListele" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM TblKategori where KategoriID = @id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="KategoriID" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KategoriID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="KategoriEkle" Modifier="Public" Name="KategoriEkle" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="KategoriEkle">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO [TblKategori] ([KategoriAd]) VALUES (@KategoriAd)
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="KategoriAd" ColumnName="KategoriAd" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@KategoriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="KategoriGuncelle" Modifier="Public" Name="KategoriGuncelle" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="KategoriGuncelle">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE TblKategori SET KategoriAd = @kategori WHERE KategoriID = @id
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="kategori" ColumnName="KategoriAd" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@kategori" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="KategoriID" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KategoriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="KategoriSil" Modifier="Public" Name="KategoriSil" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="KategoriSil">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM [TblKategori] WHERE (([KategoriID] = @Original_KategoriID) AND ([KategoriAd] = @Original_KategoriAd))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_KategoriID" ColumnName="KategoriID" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Original_KategoriID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="KategoriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_KategoriAd" ColumnName="KategoriAd" DataSourceName="DbYeni.dbo.TblKategori" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Original_KategoriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="KategoriAd" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ToplamKategoriSayisi" Modifier="Public" Name="ToplamKategoriSayisi" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="ToplamKategoriSayisi">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM TblKategori</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UrunKategoriSay" Modifier="Public" Name="UrunKategoriSay" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UrunKategoriSay">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM TblUrun where UrunKategori = @kategori</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="kategori" ColumnName="UrunKategori" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@kategori" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UrunKategori" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TblMusterilerTableAdapter" GeneratorDataComponentClassName="TblMusterilerTableAdapter" Name="TblMusteriler" UserDataComponentName="TblMusterilerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblMusteriler" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="MusteriListele" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="MusteriListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="MusteriListele" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [TblMusteriler] WHERE (([MusteriID] = @Original_MusteriID) AND ([MusteriAd] = @Original_MusteriAd) AND ([MusteriSoyad] = @Original_MusteriSoyad) AND ([MusteriSehir] = @Original_MusteriSehir) AND ([MusteriBakiye] = @Original_MusteriBakiye))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MusteriID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MusteriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MusteriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MusteriSoyad" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSoyad" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MusteriSehir" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSehir" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_MusteriBakiye" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MusteriBakiye" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [TblMusteriler] ([MusteriAd], [MusteriSoyad], [MusteriSehir], [MusteriBakiye]) VALUES (@MusteriAd, @MusteriSoyad, @MusteriSehir, @MusteriBakiye);
+SELECT MusteriID, MusteriAd, MusteriSoyad, MusteriSehir, MusteriBakiye FROM TblMusteriler WHERE (MusteriID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MusteriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSoyad" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSoyad" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSehir" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSehir" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MusteriBakiye" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MusteriBakiye" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM TblMusteriler</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [TblMusteriler] SET [MusteriAd] = @MusteriAd, [MusteriSoyad] = @MusteriSoyad, [MusteriSehir] = @MusteriSehir, [MusteriBakiye] = @MusteriBakiye WHERE (([MusteriID] = @Original_MusteriID) AND ([MusteriAd] = @Original_MusteriAd) AND ([MusteriSoyad] = @Original_MusteriSoyad) AND ([MusteriSehir] = @Original_MusteriSehir) AND ([MusteriBakiye] = @Original_MusteriBakiye));
+SELECT MusteriID, MusteriAd, MusteriSoyad, MusteriSehir, MusteriBakiye FROM TblMusteriler WHERE (MusteriID = @MusteriID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MusteriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSoyad" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSoyad" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSehir" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSehir" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MusteriBakiye" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MusteriBakiye" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MusteriID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MusteriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MusteriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MusteriSoyad" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSoyad" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MusteriSehir" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MusteriSehir" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_MusteriBakiye" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="MusteriBakiye" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriID" ColumnName="MusteriID" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@MusteriID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MusteriID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MusteriID" DataSetColumn="MusteriID" />
+              <Mapping SourceColumn="MusteriAd" DataSetColumn="MusteriAd" />
+              <Mapping SourceColumn="MusteriSoyad" DataSetColumn="MusteriSoyad" />
+              <Mapping SourceColumn="MusteriSehir" DataSetColumn="MusteriSehir" />
+              <Mapping SourceColumn="MusteriBakiye" DataSetColumn="MusteriBakiye" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblMusteriler" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="MusteriAdListele" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="MusteriAdListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="MusteriAdListele" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM TblMusteriler where MusteriAd = @ad</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ad" ColumnName="MusteriAd" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ad" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="DbYeni.dbo.TblMusteriler" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="MusteriSehirListele" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="MusteriSehirListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="MusteriSehirListele" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM TblMusteriler where MusteriSehir = @sehir</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="sehir" ColumnName="MusteriSehir" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@sehir" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriSehir" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MusteriEkle" Modifier="Public" Name="MusteriEkle" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="MusteriEkle">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO [TblMusteriler] ([MusteriAd], [MusteriSoyad], [MusteriSehir], [MusteriBakiye]) VALUES (@MusteriAd, @MusteriSoyad, @MusteriSehir, @MusteriBakiye);
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriAd" ColumnName="MusteriAd" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@MusteriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriSoyad" ColumnName="MusteriSoyad" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSoyad" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriSoyad" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriSehir" ColumnName="MusteriSehir" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSehir" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriSehir" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriBakiye" ColumnName="MusteriBakiye" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@MusteriBakiye" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="MusteriBakiye" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MusteriGuncelle" Modifier="Public" Name="MusteriGuncelle" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="MusteriGuncelle">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE [TblMusteriler] SET [MusteriAd] = @MusteriAd, [MusteriSoyad] = @MusteriSoyad, [MusteriSehir] = @MusteriSehir, [MusteriBakiye] = @MusteriBakiye WHERE [MusteriID] = @Original_MusteriID
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriAd" ColumnName="MusteriAd" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@MusteriAd" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriSoyad" ColumnName="MusteriSoyad" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSoyad" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriSoyad" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriSehir" ColumnName="MusteriSehir" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@MusteriSehir" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriSehir" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MusteriBakiye" ColumnName="MusteriBakiye" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="decimal(18, 2)" DbType="Decimal" Direction="Input" ParameterName="@MusteriBakiye" Precision="18" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="MusteriBakiye" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_MusteriID" ColumnName="MusteriID" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Original_MusteriID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MusteriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MusteriSil" Modifier="Public" Name="MusteriSil" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="MusteriSil">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM [TblMusteriler] WHERE [MusteriID] = @Original_MusteriID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_MusteriID" ColumnName="MusteriID" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Original_MusteriID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MusteriID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ToplamMusteriSayisi" Modifier="Public" Name="ToplamMusteriSayisi" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ToplamMusteriSayisi">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM TblMusteriler</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable2TableAdapter" GeneratorDataComponentClassName="DataTable2TableAdapter" Name="DataTable2" UserDataComponentName="DataTable2TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="SatisListele" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="SatisListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="SatisListele" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SatisID,MusteriAd,MusteriSoyad,UrunAd,UrunSatis FROM TblSatis
+inner join TblUrun
+on TblUrun.UrunID = TblSatis.SatinUrun
+inner join TblMusteriler
+on TblMusteriler.MusteriID = TblSatis.SatinAlan</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MusteriAd" DataSetColumn="MusteriAd" />
+              <Mapping SourceColumn="MusteriSoyad" DataSetColumn="MusteriSoyad" />
+              <Mapping SourceColumn="UrunAd" DataSetColumn="UrunAd" />
+              <Mapping SourceColumn="UrunSatis" DataSetColumn="UrunSatis" />
+              <Mapping SourceColumn="SatisID" DataSetColumn="SatisID" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="SatisAdListele" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="SatisAdListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SatisAdListele" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SatisID,MusteriAd,MusteriSoyad,UrunAd,UrunSatis FROM TblSatis
+inner join TblUrun
+on TblUrun.UrunID = TblSatis.SatinUrun
+inner join TblMusteriler
+on TblMusteriler.MusteriID = TblSatis.SatinAlan
+where MusteriAd = @ad</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ad" ColumnName="MusteriAd" DataSourceName="DbYeni.dbo.TblMusteriler" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ad" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="MusteriAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="SatisUrunListele" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="SatisUrunListele" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SatisUrunListele" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SatisID,MusteriAd,MusteriSoyad,UrunAd,UrunSatis FROM TblSatis
+inner join TblUrun
+on TblUrun.UrunID = TblSatis.SatinUrun
+inner join TblMusteriler
+on TblMusteriler.MusteriID = TblSatis.SatinAlan
+where UrunAd = @ad</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ad" ColumnName="UrunAd" DataSourceName="DbYeni.dbo.TblUrun" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ad" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="UrunAd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DbYeniConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SatisSil" Modifier="Public" Name="SatisSil" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SatisSil">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE  From TblSatis where SatisID = @id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="SatisID" DataSourceName="DbYeni.dbo.TblSatis" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="SatisID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet1" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UrunID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="UrunIDColumn" msprop:Generator_ColumnPropNameInRow="UrunID" msprop:Generator_UserColumnName="UrunID" msprop:Generator_ColumnVarNameInTable="columnUrunID" type="xs:int" />
+              <xs:element name="UrunAd" msprop:Generator_ColumnPropNameInTable="UrunAdColumn" msprop:Generator_ColumnPropNameInRow="UrunAd" msprop:Generator_UserColumnName="UrunAd" msprop:Generator_ColumnVarNameInTable="columnUrunAd">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrunAlis" msprop:Generator_ColumnPropNameInTable="UrunAlisColumn" msprop:Generator_ColumnPropNameInRow="UrunAlis" msprop:Generator_UserColumnName="UrunAlis" msprop:Generator_ColumnVarNameInTable="columnUrunAlis" type="xs:decimal" />
+              <xs:element name="UrunSatis" msprop:Generator_ColumnPropNameInTable="UrunSatisColumn" msprop:Generator_ColumnPropNameInRow="UrunSatis" msprop:Generator_UserColumnName="UrunSatis" msprop:Generator_ColumnVarNameInTable="columnUrunSatis" type="xs:decimal" />
+              <xs:element name="UrunStok" msprop:Generator_ColumnPropNameInTable="UrunStokColumn" msprop:Generator_ColumnPropNameInRow="UrunStok" msprop:Generator_UserColumnName="UrunStok" msprop:Generator_ColumnVarNameInTable="columnUrunStok" type="xs:int" />
+              <xs:element name="KategoriAd" msprop:Generator_ColumnPropNameInTable="KategoriAdColumn" msprop:Generator_ColumnPropNameInRow="KategoriAd" msprop:Generator_UserColumnName="KategoriAd" msprop:Generator_ColumnVarNameInTable="columnKategoriAd">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TblKategori" msprop:Generator_RowEvHandlerName="TblKategoriRowChangeEventHandler" msprop:Generator_RowDeletedName="TblKategoriRowDeleted" msprop:Generator_RowDeletingName="TblKategoriRowDeleting" msprop:Generator_RowEvArgName="TblKategoriRowChangeEvent" msprop:Generator_TablePropName="TblKategori" msprop:Generator_RowChangedName="TblKategoriRowChanged" msprop:Generator_UserTableName="TblKategori" msprop:Generator_RowChangingName="TblKategoriRowChanging" msprop:Generator_RowClassName="TblKategoriRow" msprop:Generator_TableClassName="TblKategoriDataTable" msprop:Generator_TableVarName="tableTblKategori">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KategoriID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="KategoriIDColumn" msprop:Generator_ColumnPropNameInRow="KategoriID" msprop:Generator_UserColumnName="KategoriID" msprop:Generator_ColumnVarNameInTable="columnKategoriID" type="xs:int" />
+              <xs:element name="KategoriAd" msprop:Generator_ColumnPropNameInTable="KategoriAdColumn" msprop:Generator_ColumnPropNameInRow="KategoriAd" msprop:Generator_UserColumnName="KategoriAd" msprop:Generator_ColumnVarNameInTable="columnKategoriAd">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TblMusteriler" msprop:Generator_RowEvHandlerName="TblMusterilerRowChangeEventHandler" msprop:Generator_RowDeletedName="TblMusterilerRowDeleted" msprop:Generator_RowDeletingName="TblMusterilerRowDeleting" msprop:Generator_RowEvArgName="TblMusterilerRowChangeEvent" msprop:Generator_TablePropName="TblMusteriler" msprop:Generator_RowChangedName="TblMusterilerRowChanged" msprop:Generator_UserTableName="TblMusteriler" msprop:Generator_RowChangingName="TblMusterilerRowChanging" msprop:Generator_RowClassName="TblMusterilerRow" msprop:Generator_TableClassName="TblMusterilerDataTable" msprop:Generator_TableVarName="tableTblMusteriler">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MusteriID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="MusteriIDColumn" msprop:Generator_ColumnPropNameInRow="MusteriID" msprop:Generator_UserColumnName="MusteriID" msprop:Generator_ColumnVarNameInTable="columnMusteriID" type="xs:int" />
+              <xs:element name="MusteriAd" msprop:Generator_ColumnPropNameInTable="MusteriAdColumn" msprop:Generator_ColumnPropNameInRow="MusteriAd" msprop:Generator_UserColumnName="MusteriAd" msprop:Generator_ColumnVarNameInTable="columnMusteriAd">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MusteriSoyad" msprop:Generator_ColumnPropNameInTable="MusteriSoyadColumn" msprop:Generator_ColumnPropNameInRow="MusteriSoyad" msprop:Generator_UserColumnName="MusteriSoyad" msprop:Generator_ColumnVarNameInTable="columnMusteriSoyad">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MusteriSehir" msprop:Generator_ColumnPropNameInTable="MusteriSehirColumn" msprop:Generator_ColumnPropNameInRow="MusteriSehir" msprop:Generator_UserColumnName="MusteriSehir" msprop:Generator_ColumnVarNameInTable="columnMusteriSehir">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MusteriBakiye" msprop:Generator_ColumnPropNameInTable="MusteriBakiyeColumn" msprop:Generator_ColumnPropNameInRow="MusteriBakiye" msprop:Generator_UserColumnName="MusteriBakiye" msprop:Generator_ColumnVarNameInTable="columnMusteriBakiye" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable2" msprop:Generator_RowClassName="DataTable2Row" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MusteriAd" msprop:Generator_UserColumnName="MusteriAd" msprop:Generator_ColumnPropNameInTable="MusteriAdColumn" msprop:Generator_ColumnPropNameInRow="MusteriAd" msprop:Generator_ColumnVarNameInTable="columnMusteriAd">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MusteriSoyad" msprop:Generator_UserColumnName="MusteriSoyad" msprop:Generator_ColumnPropNameInTable="MusteriSoyadColumn" msprop:Generator_ColumnPropNameInRow="MusteriSoyad" msprop:Generator_ColumnVarNameInTable="columnMusteriSoyad">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrunAd" msprop:Generator_UserColumnName="UrunAd" msprop:Generator_ColumnPropNameInTable="UrunAdColumn" msprop:Generator_ColumnPropNameInRow="UrunAd" msprop:Generator_ColumnVarNameInTable="columnUrunAd">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrunSatis" msprop:Generator_UserColumnName="UrunSatis" msprop:Generator_ColumnPropNameInTable="UrunSatisColumn" msprop:Generator_ColumnPropNameInRow="UrunSatis" msprop:Generator_ColumnVarNameInTable="columnUrunSatis" type="xs:decimal" />
+              <xs:element name="SatisID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="SatisID" msprop:Generator_ColumnPropNameInTable="SatisIDColumn" msprop:Generator_ColumnPropNameInRow="SatisID" msprop:Generator_ColumnVarNameInTable="columnSatisID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:field xpath="mstns:UrunID" />
+    </xs:unique>
+    <xs:unique name="TblKategori_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TblKategori" />
+      <xs:field xpath="mstns:KategoriID" />
+    </xs:unique>
+    <xs:unique name="TblMusteriler_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TblMusteriler" />
+      <xs:field xpath="mstns:MusteriID" />
+    </xs:unique>
+    <xs:unique name="DataTable2_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable2" />
+      <xs:field xpath="mstns:SatisID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
